@@ -1,0 +1,59 @@
+body {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Home Page Logo */
+.logo {
+    width: 400px;
+    margin-top: 50px;
+}
+
+/* Navigation Bars/Buttons */
+.nav-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-bar {
+    background-color: #ff9800;
+    color: black;
+    padding: 15px 50px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 200px;
+    transition: 0.3s;
+}
+
+.nav-bar:hover {
+    background-color: #e68a00;
+    transform: scale(1.05);
+}
+
+/* Grid for Characters/Planets */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #333;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #ff9800;
+}
+
+.card img {
+    height: 200px;
+    object-fit: contain;
+}

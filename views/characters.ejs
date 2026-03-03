@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>DBZ Planets</title>
+</head>
+
+<body>
+    <h1>Planets</h1>
+    <a href="/" style="color: #ff9800;">Back to Home</a>
+
+    <form action="/search-characters" method="GET" class="search-form">
+        <input type="text" name="name" placeholder="Search Saiyans, Androids..."
+            value="<%= typeof searchName !== 'undefined' ? searchName : '' %>">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="grid-container">
+        <% if (characters.length> 0) { %>
+            <% characters.forEach(character=> { %>
+                <div class="card">
+                    <img src="<%= character.image %>" alt="<%= character.name %>" style="width:100%">
+                    <h3>
+                        <%= character.name %>
+                    </h3>
+                    <p>Destroyed: <%= character.isDestroyed ? "Yes" : "No" %>
+                    </p>
+                </div>
+                <% }) %>
+                    <% } else { %>
+                        <p>No planets found.</p>
+                        <% } %>
+    </div>
+</body>
+
+</html>

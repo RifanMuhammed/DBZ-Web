@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>DBZ Planets</title>
+</head>
+
+<body>
+    <h1>Planets</h1>
+    <a href="/" style="color: #ff9800;">Back to Home</a>
+
+    <form action="/search-planets" method="GET">
+        <input type="text" name="name" placeholder="Search Planet (e.g. Namek)">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="grid-container">
+        <% if (planets.length> 0) { %>
+            <% planets.forEach(planet=> { %>
+                
+                <div class="card">
+                    
+                    <img src="<%= planet.image %>" alt="<%= planet.name %>" style="width:100%">
+                    <h3>
+                        <%= planet.name %>
+                    </h3>
+                    <p>Destroyed: <%= planet.isDestroyed ? "Yes" : "No" %>
+                    </p>
+                </div>
+                <% }) %>
+                    <% } else { %>
+                        <p>No planets found.</p>
+                        <% } %>
+    </div>
+    <div class="pagination">
+        <% if (currentPage> 1) { %>
+            <a href="/planets?page=<%= currentPage - 1 %>">Previous</a>
+            <% } %>
+                <span>Page <%= currentPage %></span>
+                <a href="/planets?page=<%= currentPage + 1 %>">Next</a>
+    </div>
+</body>
+
+</html>
