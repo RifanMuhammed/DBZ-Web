@@ -15,11 +15,12 @@ app.get("/characters", async (req, res) => {
     try {
         const page = req.query.page || 1; // Get page from URL, e.g., /planets?page=2
         const response = await axios.get(`https://dragonball-api.com/api/characters?page=${page}&limit=24`);
-        
+        const totalPages = response.data.meta.totalPages;
         // The API returns 'items' and 'links' for pagination
         res.render("characters", { 
             characters: response.data.items, 
             currentPage: parseInt(page),
+            totalPages: totalPages,
             links: response.data.links 
         });
     } catch (error) {
@@ -33,12 +34,15 @@ app.get("/planets", async (req, res) => {
     try {
         const page = req.query.page || 1; // Get page from URL, e.g., /planets?page=2
         const response = await axios.get(`https://dragonball-api.com/api/planets?page=${page}&limit=12`);
+        const totalPages = response.data.meta.totalPages;
+
         
         // The API returns 'items' and 'links' for pagination
         res.render("planets", { 
             planets: response.data.items, 
             currentPage: parseInt(page),
-            links: response.data.links 
+            links: response.data.links,
+            totalPages:totalPages,
         });
     } catch (error) {
         res.render("planets", { planets: [], error: "Failed to load." });
@@ -50,41 +54,58 @@ app.get("/planets", async (req, res) => {
 //Search/Filters
 app.get("/search-planets", async (req, res) => {
     const planetName = req.query.name;
+    if(!planetName){
+        return res.redirect("/planets");
+    }
     try {
         const response = await axios.get(`https://dragonball-api.com/api/planets?name=${planetName}`);
+        const totalPages = (response.data.meta) ? response.data.meta.totalPages : 1;
+
         // Note: The API might return a single object or an array depending on the search
         const results = Array.isArray(response.data) ? response.data : [response.data];
-        res.render("planets", { planets: results, currentPage: 1 });
+        res.render("planets", { 
+            planets: results, 
+            currentPage: 1,
+            totalPages:totalPages,
+        });
+
     } catch (error) {
-        res.render("planets", { planets: [], error: "No planet found with that name." });
+        res.render("planets", { 
+            planets: [], 
+            currentPage: 1,      // ADD THIS LINE
+            totalPages: 1, 
+            error: "No planet found with that name." 
+        });
     }
 });
 
 
 app.get("/search-characters", async (req, res) => {
-    const charName = req.query.name; // Grabs 'name' from the URL: /search-characters?name=Goku
-    try {
-        // If there is a name, we filter. If not, we redirect to the main characters list.
-        if (!charName) {
-            return res.redirect("/characters");
-        }
+    const charName = req.query.name;
+    if (!charName) {
+        return res.redirect("/characters");
+    }
 
+    try {
         const response = await axios.get(`https://dragonball-api.com/api/characters?name=${charName}`);
         
-        // The search endpoint usually returns an array of matches
-        const results = Array.isArray(response.data) ? response.data : [response.data];
+        // Search results are usually a direct array, so meta doesn't exist
+        const results = response.data; 
+        
+        // Safely check if meta exists, otherwise default to 1
+        const totalPages = (response.data.meta) ? response.data.meta.totalPages : 1;
 
         res.render("characters", { 
             characters: results, 
             currentPage: 1,
-            searchName: charName 
+            searchName: charName,
+            totalPages: totalPages 
         });
     } catch (error) {
-        // If no character is found, the API might throw a 404
         res.render("characters", { 
             characters: [], 
-            error: `No character found named "${charName}"`, 
             currentPage: 1,
+            totalPages: 1, 
             searchName: charName
         });
     }

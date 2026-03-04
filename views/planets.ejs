@@ -7,26 +7,27 @@
 </head>
 
 <body>
-    <h1>Planets</h1>
     <img src="/styles/Dragon-Ball-Z-Logo-PNG-File.png" class="logo2" alt="DBZ Logo">
-    <a href="/" style="color: #ff9800;">Back to Home</a>
+    <a href="/"  class="back-to-homepage">Back to Home</a>
 
     <form action="/search-planets" method="GET">
-        <input type="text" name="name" placeholder="Search Planet (e.g. Namek)">
-        <button type="submit">Search</button>
+        <input type="text" name="name" placeholder="Search Planet (e.g. Namek)" class="search-bar">
+        <button type="submit" class="submit-button">Search</button>
     </form>
 
     <div class="grid-container">
         <% if (planets.length> 0) { %>
             <% planets.forEach(planet=> { %>
                 
-                <div class="card">
+                <div class="card card-2 card-hidden">
                     
                     <img src="<%= planet.image %>" alt="<%= planet.name %>" style="width:100%">
-                    <h3>
+                    <h2>
                         <%= planet.name %>
-                    </h3>
-                    <p>Destroyed: <%= planet.isDestroyed ? "Yes" : "No" %>
+                    </h2>
+                    <hr>
+                    <p class="description-planet"><%= planet.description %></p>
+                    <p class="destroyed">Destroyed: <%= planet.isDestroyed ? "Yes" : "No" %>
                     </p>
                 </div>
                 <% }) %>
@@ -36,11 +37,35 @@
     </div>
     <div class="pagination">
         <% if (currentPage> 1) { %>
-            <a href="/planets?page=<%= currentPage - 1 %>">Previous</a>
+            <a href="/planets?page=<%= currentPage - 1 %>" class="prev-next prev">Previous</a>
             <% } %>
+    
                 <span>Page <%= currentPage %></span>
-                <a href="/planets?page=<%= currentPage + 1 %>">Next</a>
+    
+                <% if (currentPage < totalPages) { %>
+                    <a href="/planets?page=<%= currentPage + 1 %>" class="prev-next next">Next</a>
+                    <% } %>
     </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // When the card enters the screen, add the 'show' class
+                    entry.target.classList.add('card-show');
+                }
+            });
+        }, {
+            threshold: 0.1 // Triggers when 10% of the card is visible
+        });
+
+        // Tell the observer to watch all hidden cards
+        const hiddenElements = document.querySelectorAll('.card-hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+
+
+    </script>
 </body>
 
 </html>

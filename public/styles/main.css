@@ -16,21 +16,32 @@ body {
 }
 
 
-
 /* Home Page Logo */
 .logo {
     width: 50%;
     margin-top: 50px;
+    transition:transform 0.3s ease-in-out;
+        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+}
+
+.logo:hover{
+    transform: scale(1.05);
+    will-change: transform;
 }
 
 
 .logo2{
-            display: block;         /* Changes the image from inline to a block element */
-            margin-left: auto;      /* Pushes the image from the left towards the center */
-            margin-right: auto;     /* Pushes the image from the right towards the center */
-            width: 400px;           /* Sets a specific width for your logo */
-            height: auto;           /* Maintains the aspect ratio so it doesn't look stretched */
-            margin-bottom: 20px;    /* Adds some breathing room between the logo and buttons */
+    display: block;         /* Changes the image from inline to a block element */
+    margin-left: auto;      /* Pushes the image from the left towards the center */
+    margin-right: auto;     /* Pushes the image from the right towards the center */
+    width: 400px;           /* Sets a specific width for your logo */
+    height: auto;           /* Maintains the aspect ratio so it doesn't look stretched */
+    margin-bottom: 20px;    /* Adds some breathing room between the logo and buttons */
+        transition: transform 0.3s ease-in-out;
+}
+
+.logo2:hover{
+    transform: scale(1.25);
 }
 
 
@@ -43,6 +54,7 @@ body {
     justify-content: center;
     gap: 30px;
     align-items: center;
+    
 }
 
 .nav-bar {
@@ -56,12 +68,13 @@ body {
     font-weight: bold;
     border-radius: 20px;
     width: 250px;
-    border: 1px solid black;
+    border: 1px solid #ff9800 ;
     /* Keeps button size stable */
 
     /* This makes the change smooth instead of instant */
-        transition: transform 0.3s ease-in-out;
-        will-change: transform;
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.5));
 }
 
 .nav-bar:hover {
@@ -72,7 +85,7 @@ body {
 .nav-bar:hover {
     background-color: #000000;  /* Changes to Black */
     color: #ff9800;             /* Text changes to Orange */
-    border-color:#ff9800;       /* Adds a White border glow */
+    border-color: #ff9800;       /* Adds a White border glow */
     
     
 }
@@ -80,28 +93,231 @@ body {
 /* Grid for Characters/Planets */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+        /* This creates 4 equal columns */
+        grid-template-columns: repeat(4, 1fr);
+    
+        /* Adds space between the cards */
+        gap: 20px;
+    
+        /* Centers the entire grid on your page */
+        max-width: 1300px;
+        margin: 40px auto;
+        padding: 0 20px;
+    
 }
 
-.card {
+/* For tablets: 2 cards per row */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For phones: 1 card per row */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.card-1 {
     background: #333;
     padding: 15px;
     border-radius: 10px;
     border: 2px solid #ff9800;
-    transition: transform 0.3s ;
+    text-align: left;
+    background-image: url("../dbz-dragon-ball-z-goku-dragon-ball-super-wallpaper-preview.jpg");
+    
+    background-position: top;
+    background-size: 200% 57%;
+    background-repeat: no-repeat;
+   
 
 }
 
-.card img:hover{
-    transform: scale(1.45);
-    will-change:transform;
-    }
+.card-2 {
+    display: flex;
+    flex-direction: column;
 
-.card img {
+    background: #333;
+    padding: 0;
+    border-radius: 10px;
+    border: 2px solid #ff9800;
+    height: 100%;
+
+
+
+}
+
+
+.card-1 img {
+    will-change:transform;
     height: 350px;
     object-fit: contain;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 
+}
+
+
+.card-1 img:hover{
+    transform: scale(1.30);
+}
+
+.card-2 img {
+    width: 100%;
+    /* Spans the full width of the card */
+    height: 250px;
+    /* Set a fixed height for the top section */
+    /* Removes the small gap at the bottom of images */
+    object-fit: cover;
+    /* Keeps the planet shape perfect while filling the area */
+
+    border-radius: 6px ;
+    
+}
+
+hr {
+    width: 60%;
+    /* Forces it to span the full width */
+    border: 0;
+    /* Removes default 3D border */
+    border-top: 1px solid #ff9800;
+    /* Adds your DBZ orange line */
+
+}
+
+.card-2 h2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.description-planet{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: left;
+    padding: 30px;
+    font-weight:lighter;
+    color: gainsboro;
+}
+
+.destroyed{
+    margin-top: auto;
+    padding: 30px;
+    color: #ff9800;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+
+
+.textyellow{
+    color: #ff9800;
+    margin-top: 0px;
+}
+
+.marginbottom{
+    margin-bottom: 5px;
+}
+
+.search-bar{
+    background-color: #1a1a1a;
+    padding: 5px 5px;
+    border-radius: 5px;
+    text-align: left;
+    border: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right:10px;
+    border: 1px solid #ff9800;
+    text-align: center;
+    color: #ff9800;
+    font-family: serif;
+}
+
+.submit-button{
+    background-color: #333;
+    color: #ff9800;
+    border-radius: 10px;
+}
+
+.submit-button:hover{
+    transform: scale(1.05);
+    will-change: transform;
+}
+
+.back-to-homepage{   
+    color: #ff9800;
+    display: inline-block;
+        /* DBZ Orange */
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        border: 1px solid #ff9800;
+        border-radius: 5px;
+        background: transparent;
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 20px;
+
+}
+
+
+
+.back-to-homepage:hover {
+    background-color: #ff9800;
+    /* Flips colors on hover */
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 152, 0, 0.6);
+    /* Energy glow */
+    transform: translateY(-2px);
+    /* Subtle lift */
+}
+
+
+.pagination {
+    background-color: #ff9800;
+    
+    width: 250px;
+    /* DBZ Orange */
+    padding: 10px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 30px auto;
+    gap: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 -5px 15px rgba(255, 152, 0, 0.3);
+    /* Subtle upward glow */
+}
+
+
+.prev-next{
+    text-decoration:none;
+    color: black;
+}
+
+.prev-next:hover{
+    transform: scale(1.05);
+}
+
+
+
+/* The initial hidden state */
+/* 1. The Starting State */
+.card-hidden {
+    opacity: 0;
+    transform: scale(0.5);
+    /* Start at half-size */
+
+    /* The 'cubic-bezier' below creates the "pop" bounce effect */
+    transition: transform 0.3s ease-out;
+
+    /* Ensures the scale happens from the center */
+    transform-origin: center;
+}
+
+/* 2. The Visible State (Triggered by JS) */
+.card-show {
+    opacity: 1;
+    transform: scale(1);
+    /* Grows to full size */
 }
