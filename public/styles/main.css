@@ -134,6 +134,18 @@ body {
    
 
 }
+.card-1 img {
+    will-change:transform;
+    height: 350px;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+
+}
+
+.card-1 img:hover{
+    transform: scale(1.30);
+}
+
 
 .card-2 {
     display: flex;
@@ -145,23 +157,8 @@ body {
     border: 2px solid #ff9800;
     height: 100%;
 
-
-
 }
 
-
-.card-1 img {
-    will-change:transform;
-    height: 350px;
-    object-fit: contain;
-    transition: transform 0.2s ease-in-out;
-
-}
-
-
-.card-1 img:hover{
-    transform: scale(1.30);
-}
 
 .card-2 img {
     width: 100%;
@@ -176,6 +173,10 @@ body {
     
 }
 
+.card-2 h2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 hr {
     width: 60%;
     /* Forces it to span the full width */
@@ -186,9 +187,10 @@ hr {
 
 }
 
-.card-2 h2{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+
+
+
+
 
 .description-planet{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -334,4 +336,59 @@ hr {
 .detail-img {
     max-height: 500px;
     filter: drop-shadow(0 0 15px #ff9800);
+}
+
+
+.mute-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff9800;
+    /* DBZ Orange */
+    border: 3px solid #000;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.mute-button:hover {
+    transform: scale(1.1);
+    background-color: #e68a00;
+}
+
+.mute-button:active {
+    transform: scale(0.9);
+}
+
+@keyframes aura-glow {
+    0% {
+        box-shadow: 0 0 5px #ff9800, 0 0 10px #ff9800;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #ffeb3b, 0 0 30px #ff9800;
+    }
+
+    100% {
+        box-shadow: 0 0 5px #ff9800, 0 0 10px #ff9800;
+    }
+}
+
+.mute-button {
+    /* ... your existing styles ... */
+    animation: aura-glow 2s infinite ease-in-out;
+}
+
+.mute-button.muted {
+    animation: none;
+    background-color: #555;
+    border-color: #333;
 }

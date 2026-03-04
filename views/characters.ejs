@@ -3,13 +3,19 @@
 
 <head>
     <link rel="stylesheet" href="/styles/main.css">
-    <title>DBZ Planets</title>
+    <title>DBZ Characters</title>
 </head>
 
 <body>
+
     <img src="/styles/Dragon-Ball-Z-Logo-PNG-File.png" class="logo2" alt="DBZ Logo">
 
-    <a href="/" class="back-to-homepage">Back to Home</a>
+
+    <div class="nav-container">
+        <a href="/" class="back-to-homepage">Back to Home</a>
+    </div>
+
+
 
     <form action="/search-characters" method="GET" class="search-form">
         <input type="text" name="name" placeholder="Search Saiyans, Androids..." class="search-bar"
@@ -17,30 +23,45 @@
         <button type="submit" class="submit-button">Search</button>
     </form>
 
+
+
     <div class="grid-container">
         <% if (characters.length> 0) { %>
             <% characters.forEach(character=> { %>
+
                 <div class="card card-hidden card-1">
                     <a href="/character/<%= character.id %>">
-                        <img  class="new" src="<%= character.image %>" alt="<%= character.name %>" style="width:100%">
+                        <img class="new" src="<%= character.image %>" alt="<%= character.name %>" style="width:100%">
                     </a>
+
                     <h2>
                         <%= character.name %>
                     </h2>
+
                     <h3 class="textyellow">
-                        <%= character.race %>-<%= character.gender %>
+                        <%= character.race %> - <%= character.gender %>
                     </h3>
 
-                    <h3 class="marginbottom">Base Ki:</h3>
-                    <h4 class="textyellow"><%= character.ki %></h4>
-                    <h3 class="marginbottom">Max Ki: </h3>
-                    <h4 class="textyellow"><%= character.maxKi %></h4>
-                    <h5><%= character.affiliation %></h5>
-                    
+                    <div class="ki-info">
+                        <h3 class="marginbottom">Base Ki:</h3>
+                        <h4 class="textyellow">
+                            <%= character.ki %>
+                        </h4>
+
+                        <h3 class="marginbottom">Max Ki: </h3>
+                        <h4 class="textyellow">
+                            <%= character.maxKi %>
+                        </h4>
+                    </div>
+
+                    <h5>
+                        <%= character.affiliation %>
+                    </h5>
                 </div>
+
                 <% }) %>
                     <% } else { %>
-                        <p>No planets found.</p>
+                        <p class="no-results">No characters found.</p>
                         <% } %>
     </div>
 
@@ -50,37 +71,42 @@
         <% if (currentPage> 1) { %>
             <a href="/characters?page=<%= currentPage - 1 %>" class="prev-next prev">Previous</a>
             <% } %>
-    
-                <span>Page <%= currentPage %></span>
-    
+
+                <span class="page-indicator">Page <%= currentPage %></span>
+
                 <% if (currentPage < totalPages) { %>
                     <a href="/characters?page=<%= currentPage + 1 %>" class="prev-next next">Next</a>
                     <% } %>
     </div>
-            
-    
+
+
+
+    <button id="mute-btn" class="mute-button">
+        <span id="mute-icon">🔊</span>
+    </button>
+
+
 
     <script>
+        // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // When the card enters the screen, add the 'show' class
                     entry.target.classList.add('card-show');
                 }
             });
         }, {
-            threshold: 0.1 // Triggers when 10% of the card is visible
+            threshold: 0.1
         });
 
-        // Tell the observer to watch all hidden cards
         const hiddenElements = document.querySelectorAll('.card-hidden');
         hiddenElements.forEach((el) => observer.observe(el));
-
-
-        
     </script>
 
-  
+
+
+    <script src="/audio-handler.js"></script>
+
 </body>
 
 </html>

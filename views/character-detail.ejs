@@ -4,18 +4,18 @@
 <head>
     <link rel="stylesheet" href="/styles/main.css">
     <title>
-        <%= character.name %> Details
+        <%= character.name %> - Details
     </title>
 </head>
 
 <body>
     <img src="/styles/Dragon-Ball-Z-Logo-PNG-File.png" class="logo2" alt="DBZ Logo">
-    <a href="/characters" class="back-to-homepage">Back to Characters</a>
+    <a href="/characters" class="back-to-homepage">Back to All Characters</a>
 
     <div class="detail-container">
         <div class="main-profile">
             <img src="<%= character.image %>" alt="<%= character.name %>" class="detail-img">
-            <h1 class="textyellow">
+            <h1>
                 <%= character.name %>
             </h1>
             <p class="description-planet">
@@ -24,25 +24,38 @@
         </div>
 
         <hr>
-        <h2 style="color:#ff9800">Transformations</h2>
+        <h2>Transformations</h2>
         <div class="grid-container">
             <% if (character.transformations && character.transformations.length> 0) { %>
                 <% character.transformations.forEach(form=> { %>
-                    <div class="card card-1 card-show">
-                        <img src="<%= form.image %>" alt="<%= form.name %>"
-                            style="width:100%; height:300px; object-fit:contain;">
-                        <h3 class="textyellow">
+                    <div class="card card-1">
+                        <img class="new" src="<%= form.image %>" alt="<%= form.name %>" style="width:100%;">
+
+                        <h2 class="textyellow">
                             <%= form.name %>
-                        </h3>
+                        </h2>
                         <p>Ki: <%= form.ki %>
                         </p>
                     </div>
                     <% }) %>
                         <% } else { %>
-                            <p>No transformations recorded.</p>
+                            <p class="no-results-message">This character has no recorded transformations.</p>
                             <% } %>
         </div>
     </div>
+
+
+    <button id="mute-btn" class="mute-button">
+        <span id="mute-icon">🔊</span>
+    </button>
+
+
+    <script src="/audio-handler.js"></script>
+
+
 </body>
+
+
+
 
 </html>
