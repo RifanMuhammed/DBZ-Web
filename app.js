@@ -10,21 +10,29 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-// 2. All Characters Page
+// 2. All Charcters Page ,Pagination
 app.get("/characters", async (req, res) => {
     try {
-        const response = await axios.get("https://dragonball-api.com/api/characters?limit=50");
-        res.render("characters", { characters: response.data.items });
+        const page = req.query.page || 1; // Get page from URL, e.g., /planets?page=2
+        const response = await axios.get(`https://dragonball-api.com/api/characters?page=${page}&limit=24`);
+        
+        // The API returns 'items' and 'links' for pagination
+        res.render("characters", { 
+            characters: response.data.items, 
+            currentPage: parseInt(page),
+            links: response.data.links 
+        });
     } catch (error) {
-        res.render("characters", { characters: [], error: "Failed to load characters." });
+        res.render("planets", { planets: [], error: "Failed to load." });
     }
 });
+
 
 // 3. All Planets Page ,Pagination
 app.get("/planets", async (req, res) => {
     try {
         const page = req.query.page || 1; // Get page from URL, e.g., /planets?page=2
-        const response = await axios.get(`https://dragonball-api.com/api/planets?page=${page}&limit=10`);
+        const response = await axios.get(`https://dragonball-api.com/api/planets?page=${page}&limit=12`);
         
         // The API returns 'items' and 'links' for pagination
         res.render("planets", { 

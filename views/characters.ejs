@@ -8,6 +8,8 @@
 
 <body>
     <h1>Planets</h1>
+    <img src="/styles/Dragon-Ball-Z-Logo-PNG-File.png" class="logo2" alt="DBZ Logo">
+
     <a href="/" style="color: #ff9800;">Back to Home</a>
 
     <form action="/search-characters" method="GET" class="search-form">
@@ -20,10 +22,11 @@
         <% if (characters.length> 0) { %>
             <% characters.forEach(character=> { %>
                 <div class="card">
-                    <img src="<%= character.image %>" alt="<%= character.name %>" style="width:100%">
+                    <img  class="new" src="<%= character.image %>" alt="<%= character.name %>" style="width:100%">
                     <h3>
                         <%= character.name %>
                     </h3>
+                    <h3>KI:<%= character.ki %></h3>
                     <p>Destroyed: <%= character.isDestroyed ? "Yes" : "No" %>
                     </p>
                 </div>
@@ -31,6 +34,16 @@
                     <% } else { %>
                         <p>No planets found.</p>
                         <% } %>
+    </div>
+
+
+
+    <div class="pagination">
+        <% if (currentPage> 1) { %>
+            <a href="/characters?page=<%= currentPage - 1 %>">Previous</a>
+            <% } %>
+                <span>Page <%= currentPage %></span>
+                <a href="/characters?page=<%= currentPage + 1 %>">Next</a>
     </div>
 </body>
 

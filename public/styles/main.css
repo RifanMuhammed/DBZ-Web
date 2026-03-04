@@ -5,37 +5,76 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
+    background-image: url("../dragon-ball-goku-sparks-gif-preview-desktop-wallpaper.gif"); /* Path to your image */
+        background-size: cover;                 /* Scales the image to fill the screen */
+        background-position: center;            /* Centers the image */
+        background-attachment: fixed;           /* Keeps the background still when scrolling */
+        background-repeat: no-repeat;           /* Prevents the image from tiling */
+    
+        /* Optional: Add a dark overlay so text remains readable */
+        background-color: rgba(0, 0, 0, 0.6);
 }
+
+
 
 /* Home Page Logo */
 .logo {
-    width: 400px;
+    width: 50%;
     margin-top: 50px;
 }
+
+
+.logo2{
+            display: block;         /* Changes the image from inline to a block element */
+            margin-left: auto;      /* Pushes the image from the left towards the center */
+            margin-right: auto;     /* Pushes the image from the right towards the center */
+            width: 400px;           /* Sets a specific width for your logo */
+            height: auto;           /* Maintains the aspect ratio so it doesn't look stretched */
+            margin-bottom: 20px;    /* Adds some breathing room between the logo and buttons */
+}
+
+
 
 /* Navigation Bars/Buttons */
 .nav-container {
     margin-top: 30px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
     align-items: center;
 }
 
 .nav-bar {
+    display: inline-block;
+    text-align: center;
     background-color: #ff9800;
+    /* Original Orange */
     color: black;
-    padding: 15px 50px;
+    padding: 20px 0;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    width: 200px;
-    transition: 0.3s;
+    border-radius: 20px;
+    width: 250px;
+    border: 1px solid black;
+    /* Keeps button size stable */
+
+    /* This makes the change smooth instead of instant */
+        transition: transform 0.3s ease-in-out;
+        will-change: transform;
 }
 
 .nav-bar:hover {
-    background-color: #e68a00;
     transform: scale(1.05);
+
+}
+
+.nav-bar:hover {
+    background-color: #000000;  /* Changes to Black */
+    color: #ff9800;             /* Text changes to Orange */
+    border-color:#ff9800;       /* Adds a White border glow */
+    
+    
 }
 
 /* Grid for Characters/Planets */
@@ -51,9 +90,18 @@ body {
     padding: 15px;
     border-radius: 10px;
     border: 2px solid #ff9800;
+    transition: transform 0.3s ;
+
 }
 
+.card img:hover{
+    transform: scale(1.45);
+    will-change:transform;
+    }
+
 .card img {
-    height: 200px;
+    height: 350px;
     object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+
 }
