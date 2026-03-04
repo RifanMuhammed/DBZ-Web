@@ -29,6 +29,18 @@ app.get("/characters", async (req, res) => {
 });
 
 
+app.get("/character/:id", async (req, res) => {
+    try {
+        const charId = req.params.id;
+        const response = await axios.get(`https://dragonball-api.com/api/characters/${charId}`);
+        const character = response.data;
+        res.render("character-detail", { character: character });
+    } catch (error) {
+        res.status(404).send("Character not found");
+    }
+});
+
+
 // 3. All Planets Page ,Pagination
 app.get("/planets", async (req, res) => {
     try {

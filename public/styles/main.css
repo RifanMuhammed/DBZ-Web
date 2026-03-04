@@ -321,3 +321,17 @@ hr {
     transform: scale(1);
     /* Grows to full size */
 }
+
+.detail-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #ff9800;
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+.detail-img {
+    max-height: 500px;
+    filter: drop-shadow(0 0 15px #ff9800);
+}

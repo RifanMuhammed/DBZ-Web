@@ -21,7 +21,9 @@
         <% if (characters.length> 0) { %>
             <% characters.forEach(character=> { %>
                 <div class="card card-hidden card-1">
-                    <img  class="new" src="<%= character.image %>" alt="<%= character.name %>" style="width:100%">
+                    <a href="/character/<%= character.id %>">
+                        <img  class="new" src="<%= character.image %>" alt="<%= character.name %>" style="width:100%">
+                    </a>
                     <h2>
                         <%= character.name %>
                     </h2>
