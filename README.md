@@ -112,19 +112,37 @@ http://localhost:3000
 
 ## 📁 Project Structure
 
-```
-dbz-app/
-├── public/                  # Static files (CSS, Images, JS)
-│   ├── styles/              # main.css and error.css
-│   └── audio/               # Background music files
+```bash
+DBZ
+├── images
+│   └── DBZ-web-screen....png
 │
-├── views/                   # EJS Templates
-│   ├── characters.ejs       # Character listing page
-│   ├── character-detail.ejs # Single character view
-│   └── 404.ejs              # Custom error page
+├── node_modules
 │
-├── app.js                   # Main server logic and security configuration
-└── package.json             # Dependencies and scripts
+├── public
+│   ├── styles
+│   │   └── main.css
+│   │
+│   ├── audio-handler.js
+│   ├── dbz-dragon-ball-....mp3
+│   ├── dragon-ball-goku-....mp3
+│   ├── hd-dragon-ball-z-....mp3
+│   └── thisisbeatkitchen-....mp3
+│
+├── views
+│   ├── 404.ejs
+│   ├── character-detail.ejs
+│   ├── characters.ejs
+│   ├── error-limiter.ejs
+│   ├── index.ejs
+│   └── planets.ejs
+│
+├── .gitignore
+├── app.js
+├── LICENSE
+├── package-lock.json
+├── package.json
+└── README.md
 ```
 
 ---
