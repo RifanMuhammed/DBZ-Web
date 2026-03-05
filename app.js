@@ -35,10 +35,14 @@ app.use(
   })
 );
 
+
+
 // 1. Home Page
 app.get("/", (req, res) => {
     res.render("index");
 });
+
+
 
 // 2. All Characters Page (Pagination)
 app.get("/characters", async (req, res) => {
@@ -60,6 +64,34 @@ app.get("/characters", async (req, res) => {
         });
     }
 });
+
+
+
+
+// 2. All Planets Page (Pagination)
+app.get("/planets", async (req, res) => {
+    try {
+        const page = req.query.page || 1;
+        const response = await axios.get(`https://dragonball-api.com/api/planets?page=${page}&limit=12`);
+        const totalPages = response.data.meta.totalPages;
+        res.render("planets", { 
+            planets: response.data.items, 
+            currentPage: parseInt(page),
+            totalPages: totalPages,
+        });
+    } catch (error) {
+        res.render("planets", { 
+            planets: [], 
+            currentPage: 1, 
+            totalPages: 1, 
+            error: "Failed to load." 
+        });
+    }
+});
+
+
+
+
 
 // 3. Search Characters
 app.get("/search-characters", async (req, res) => {
@@ -85,28 +117,9 @@ app.get("/search-characters", async (req, res) => {
     }
 });
 
-// 4. All Planets Page (Pagination)
-app.get("/planets", async (req, res) => {
-    try {
-        const page = req.query.page || 1;
-        const response = await axios.get(`https://dragonball-api.com/api/planets?page=${page}&limit=12`);
-        const totalPages = response.data.meta.totalPages;
-        res.render("planets", { 
-            planets: response.data.items, 
-            currentPage: parseInt(page),
-            totalPages: totalPages,
-        });
-    } catch (error) {
-        res.render("planets", { 
-            planets: [], 
-            currentPage: 1, 
-            totalPages: 1, 
-            error: "Failed to load." 
-        });
-    }
-});
 
-// 5. Search Planets
+
+// 4. Search Planets
 app.get("/search-planets", async (req, res) => {
     const planetName = req.query.name;
     if(!planetName) return res.redirect("/planets");
@@ -129,6 +142,9 @@ app.get("/search-planets", async (req, res) => {
     }
 });
 
+
+
+
 // 6. Character Detail Page
 app.get("/character/:id", async (req, res) => {
     try {
@@ -142,9 +158,15 @@ app.get("/character/:id", async (req, res) => {
 });
 
 
+
+
+// For Routes that dont exist
 app.use((req, res) => {
     res.status(404).render("404", { message: "Page not found!" });
 });
+
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
