@@ -37,7 +37,7 @@ body {
     width: 400px;           /* Sets a specific width for your logo */
     height: auto;           /* Maintains the aspect ratio so it doesn't look stretched */
     margin-bottom: 20px;    /* Adds some breathing room between the logo and buttons */
-        transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .logo2:hover{
@@ -391,4 +391,14 @@ hr {
     animation: none;
     background-color: #555;
     border-color: #333;
+}
+
+
+
+.error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
