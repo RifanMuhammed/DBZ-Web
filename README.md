@@ -65,21 +65,10 @@ This project goes beyond visuals and implements production-level security practi
 ![Helmet](https://img.shields.io/badge/Helmet-000000?style=for-the-badge&logo=helmet&logoColor=white)
 
 
-### Backend
-- **Node.js**
-- **Express.js**
-
-### Frontend
-- **EJS (Embedded JavaScript)**
-- **CSS3**
-- **Vanilla JavaScript**
-
-### API & Utilities
-- **Axios** (API requests)
-
-### Security
-- **Helmet**
-- **Express Rate Limit**
+* **Backend**: Node.js, Express.js
+* **Frontend**: EJS (Embedded JavaScript), CSS3, Vanilla JavaScript
+* **API Interactions**: Axios
+* **Security**: Helmet, Express-Rate-Limit
 
 ---
 
@@ -89,6 +78,7 @@ This project goes beyond visuals and implements production-level security practi
 
 ```bash
 git clone https://github.com/RSP-007/DBZ-Web.git
+
 cd DBZ-Web
 ```
 
