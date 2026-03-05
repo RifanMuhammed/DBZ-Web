@@ -1,6 +1,6 @@
 # 🐉 Dragon Ball Z Explorer
 
-A full-stack, "Super Saiyan" level web application built with **Node.js**, **Express**, and **EJS**. This project allows users to explore the vast universe of Dragon Ball Z, from iconic characters to distant planets, pulling real-time data from the [Dragon Ball API](https://dragonball-api.com/).
+A full-stack, "Super Saiyan" level web application built with **Node.js**, **Express**, and **EJS**. This project allows users to explore the vast universe of Dragon Ball Z, from iconic characters to distant planets, pulling real-time data from the [Dragon Ball API](https://web.dragonball-api.com/documentation).
 
 ![Homepage](./images/DBZ-web-screenshot.png)
 
@@ -27,6 +27,7 @@ This project isn't just about looks; it's built with professional-grade security
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![EJS](https://img.shields.io/badge/ejs-%23B4CA65.svg?style=for-the-badge&logo=ejs&logoColor=black)
 ![Helmet](https://img.shields.io/badge/Helmet-000000?style=for-the-badge&logo=helmet&logoColor=white)
@@ -40,7 +41,7 @@ This project isn't just about looks; it's built with professional-grade security
 
 1.  **Clone the Repository**:
     ```bash
-    git clone [https://github.com/your-username/dbz-explorer.git](https://github.com/your-username/dbz-explorer.git)
+    git clone (https://github.com/RSP-007/DBZ-Web.git)
     ```
 2.  **Install Dependencies**:
     ```bash
@@ -52,7 +53,9 @@ This project isn't just about looks; it's built with professional-grade security
     ```
     *Or, if you have Nodemon installed:* `npm run dev`
 4.  **Explore**:
-    Go to `http://localhost:3000` in your browser.
+    Go to ```bash
+    `http://localhost:3000`
+    ``` in your browser.
 
 ## 📁 Project Structure
 
@@ -67,12 +70,12 @@ dbz-app/
 │   └── 404.ejs          # Custom error page
 ├── app.js               # Main server logic and security config
 └── package.json         # Dependencies and scripts
+```
 
-
-📜 License
+##📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-🤝 Credits
+##🤝 Credits
 Data provided by Dragon Ball API.
 
 Created by [RSP-007] as part of a Web Development Portfolio project.
