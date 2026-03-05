@@ -124,9 +124,9 @@ DBZ
 │   │   └── main.css
 │   │
 │   ├── audio-handler.js
-│   ├── dbz-dragon-ball-....mp3
-│   ├── dragon-ball-goku-....mp3
-│   ├── hd-dragon-ball-z-....mp3
+│   ├── dbz-dragon-ball-....jpg
+│   ├── dragon-ball-goku-....gif
+│   ├── hd-dragon-ball-z-....png
 │   └── thisisbeatkitchen-....mp3
 │
 ├── views
