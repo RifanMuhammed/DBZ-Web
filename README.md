@@ -21,14 +21,12 @@ This project isn't just about looks; it's built with professional-grade security
 * **Sanitized Data**: Uses `encodeURIComponent` for safe URL handling and EJS's built-in escaping to prevent XSS attacks.
 * **Defensive Coding**: Includes array-validation checks to prevent server crashes when the API returns unexpected data.
 
-
-
 ## 🛠️ Tech Stack
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![EJS](https://img.shields.io/badge/ejs-%23B4CA65.svg?style=for-the-badge&logo=ejs&logoColor=black)
 ![Helmet](https://img.shields.io/badge/Helmet-000000?style=for-the-badge&logo=helmet&logoColor=white)
 
@@ -53,9 +51,11 @@ This project isn't just about looks; it's built with professional-grade security
     ```
     *Or, if you have Nodemon installed:* `npm run dev`
 4.  **Explore**:
-    Go to ```bash
-    `http://localhost:3000`
-    ``` in your browser.
+    Go to 
+    ```bash
+    http://localhost:3000
+    ```
+    in your browser.
 
 ## 📁 Project Structure
 
@@ -72,10 +72,10 @@ dbz-app/
 └── package.json         # Dependencies and scripts
 ```
 
-##📜 License
+## 📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-##🤝 Credits
+## 🤝 Credits
 Data provided by Dragon Ball API.
 
 Created by [RSP-007] as part of a Web Development Portfolio project.
