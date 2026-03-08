@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import axios from "axios";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
