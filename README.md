@@ -113,9 +113,7 @@ http://localhost:3000
 ## 📁 Project Structure
 
 ```
-
-```
-DBZ-2.0-MAIN
+DBZ-MAIN
 │
 ├── node_modules/
 │
@@ -150,6 +148,8 @@ DBZ-2.0-MAIN
 ├── package.json
 └── README.md
 ```
+
+
 
 
 ## 📜 License
