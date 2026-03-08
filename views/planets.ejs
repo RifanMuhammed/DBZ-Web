@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/planets.css">
+    <title>DBZ Characters</title>
+</head>
+<body>
+
+    <img src="/Dragon-Ball-Z-Logo-PNG-File.png" class="logo-characters-page" alt="main-logo-characters-page">
+
+
+    <div class="home-page-container">
+        <a href="/"class="home-page">Home Page</a>
+    </div>
+
+    <form action="/search-planets" method="GET" class="search-form">
+        <input type="text" name="name" placeholder="Search your fav planet..." class="search-bar"
+            value="<%= typeof searchName !=='undefined'?searchName:''%>">
+        <button type="submit" class="submit-button">Search</button>
+    </form>
+
+    <%# Character-content %>
+    <div class="grid-container">
+        <% if(planets.length>0){%>
+            <% planets.forEach(planet=>{%>
+                <div class="card card-hidden">
+
+                    <img src="<%= planet.image %>" alt="planet-image" class="planet-img">
+                   
+
+                    <h1 class="planet-name"><%= planet.name %></h1>
+
+                    <hr class="hr">
+
+                    <p class="planet-description"><%= planet.description %></p>
+
+                    <h5 class="isDestroyed">Destroyed : <%= planet.isDestroyed %></h5>
+
+                </div>
+                <%}) %>
+            <%}else{%>
+                <p> No characters found</p>
+                <%} %>
+    </div>
+
+
+    <%# Pagination %>
+    <div class="pagination">
+        <% if(currentPage>1){%>
+            <a href="/planets?page=<%= currentPage-1 %>" class="prev-next">Previous</a>
+            <%} %>
+
+            <span class="span-text">Page <%= currentPage %></span>
+
+            <% if(currentPage<totalPages){%>
+                <a href="/planets?page=<%= currentPage+1 %>" class="prev-next">Next</a>
+                <%} %>
+    </div>
+
+
+     <button id="mute-btn" class="mute-button">
+        <span id="mute-icon">🔊</span>
+    </button>
+
+    <script src="/card-observer.js"></script>
+
+    
+
+    <script src="/audio-handler.js"></script>
+
+</body>
+</html>

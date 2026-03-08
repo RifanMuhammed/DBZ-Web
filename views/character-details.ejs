@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBZ-Transformation</title>
+    <link rel="stylesheet" href="/styles/transformation.css">
+</head>
+
+<body>
+    <img src="/Dragon-Ball-Z-Logo-PNG-File.png" class="logo-transformations-page" alt="dbz-logo-characters-page">
+    <a href="/characters" class="back-to-characters">Back to All Characters</a>
+
+    <div class="detail-container">
+        <div class="main-profile">
+            <img src="<%=character.image%>" class="detail-img" alt="main-profile-img">
+            <h1><%= character.name %></h1>
+            <p class="description-character">
+                <%= character.description %>
+            </p>
+        </div>
+
+        <hr class="hr">
+
+        <h1 class="transf-text-header">Transformations</h1>
+        <div class="grid-container">
+            <% if(character.transformations && character.transformations.length>0){%>
+                <% character.transformations.forEach(form=> {%>
+                    <div class="card-transformations">
+                        <img src="<%= form.image %>" class="transformation-image">
+                        <h2 class="textyellow">
+                            <%=form.name %>
+                        </h2>
+                        <p>Ki: <%= form.ki%></p>
+
+                    </div>
+                    <%}) %>
+                <%} else{%>
+                    <p>No character transformations found</p>
+                    <%} %>
+        </div>
+
+    <button id="mute-btn" class="mute-button">
+        <span id="mute-icon">🔊</span>
+    </button>
+
+    <script src="/audio-handler.js"></script>
+
+        
+
+    </div>
+
+</body>
+</html>

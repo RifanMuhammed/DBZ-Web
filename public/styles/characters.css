@@ -1,0 +1,292 @@
+
+/*Characters-page css*/
+
+body{
+
+    background-color: black;
+    background-image: url("/dragon-ball-goku-sparks-gif-preview-desktop-wallpaper.gif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 20px;
+
+}
+
+.logo-characters-page{
+    width: 20%;
+    transition:transform 0.3s ease-in-out;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+}
+
+.logo-characters-page:hover{
+    transform: scale(1.10);
+    will-change: transform;
+}
+
+
+@media(max-width:600px){
+
+    .body{
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
+    
+    .logo-characters-page{
+        width: 60%;
+    }
+}
+
+@media(max-width:1024px){
+    .logo-characters-page{
+        width: 60%;
+    }
+}
+
+
+.home-page-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-page{
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    background: transparent;
+    color: #ff9800;
+    border:1px solid #ff9800;
+    width: 220px;
+    padding: 15px 0;
+    border-radius: 10px;    
+    box-shadow: 0  5px 15px rgba(0,0,0,0.5);
+    
+    transition: transform 0.3s ease-in-out;
+}
+
+.home-page:hover{
+    background-color: #ff9800;
+    color: black;
+    box-shadow: 0 0 15px rgba(255,152,0,0.6);
+
+    transform: translateY(-2px);
+    will-change: transform;
+}
+
+
+
+.search-form{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.search-bar{
+    padding: 8px 10px;
+    background-color: black;
+    color: grey;
+    border: 0;
+    border-radius: 7px;
+    box-shadow: 0  5px 15px rgba(0,0,0,0.5);
+}
+
+
+.submit-button{
+    background-color: #ff9800;
+    color: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    border-radius: 7px;
+    border: 0;
+    padding: 4px 13px;
+    box-shadow: 0  5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease-in-out;
+}
+
+.submit-button:hover{
+    background-color: black;
+    color:#ff9800;
+    border: 1px solid #ff9800;
+    transform: scale(1.05);
+    will-change: transform;
+}
+
+
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 20px
+}
+
+
+@media (max-width:1024px){
+    .grid-container{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width:600px){
+    .grid-container{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+
+.card{
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #ff9800;
+    text-align: left;
+    background-image: url("/dbz-dragon-ball-z-goku-dragon-ball-super-wallpaper-preview.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 200% 57%;
+    color: white;
+
+}
+
+
+.card-img{
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    margin-bottom: 0;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.card-img:hover{
+    transform: scale(1.30);
+}
+
+.race-gender{
+    color: #ff9800;
+}
+
+.yellow-text{
+    color: #ff9800;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.margin-bottom-txt{
+    margin-bottom: 0;
+}
+
+.pagination{
+    background-color: #ff9800;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    padding: 5px;
+    gap: 10px;
+    border-radius: 10px;   
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-shadow: 0 0 15px rgba(255,152,0,0.6);
+}
+
+.span-text{
+    color: white;
+}
+
+.prev-next{
+    color: black;
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: small;
+
+}
+
+.prev-next:hover{
+    transform: scale(1.15);
+}
+
+
+
+.card-hidden{
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.6s ease;
+
+}
+
+.card-show{
+    opacity: 1;
+    transform: scale(1.00);
+}
+
+
+
+
+.mute-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ff9800;
+    /* DBZ Orange */
+    border: 3px solid #000;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.mute-button:hover {
+    transform: scale(1.1);
+    background-color: #e68a00;
+}
+
+.mute-button:active {
+    transform: scale(0.9);
+}
+
+@keyframes aura-glow {
+    0% {
+        box-shadow: 0 0 5px #ff9800, 0 0 10px #ff9800;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #ffeb3b, 0 0 30px #ff9800;
+    }
+
+    100% {
+        box-shadow: 0 0 5px #ff9800, 0 0 10px #ff9800;
+    }
+}
+
+.mute-button {
+    /* ... your existing styles ... */
+    animation: aura-glow 2s infinite ease-in-out;
+}
+
+.mute-button.muted {
+    animation: none;
+    background-color: #555;
+    border-color: #333;
+}

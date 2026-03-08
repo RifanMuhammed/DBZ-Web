@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/characters.css">
+    <title>DBZ Characters</title>
+</head>
+<body>
+
+    <img src="/Dragon-Ball-Z-Logo-PNG-File.png" class="logo-characters-page" alt="main-logo-characters-page">
+
+
+    <div class="home-page-container">
+        <a href="/"class="home-page">Home Page</a>
+    </div>
+
+    <form action="/search-characters" method="GET" class="search-form">
+        <input type="text" name="name" placeholder="Search your fav charcater..." class="search-bar"
+            value="<%= typeof searchName !=='undefined'?searchName:''%>">
+        <button type="submit" class="submit-button">Search</button>
+    </form>
+
+    <%# Character-content %>
+    <div class="grid-container">
+        <% if(characters.length>0){%>
+            <% characters.forEach(character=>{%>
+                <div class="card card-hidden">
+
+                    <a href="/characters/<%=character.id %>">
+                        <img src="<%= character.image %>" alt="character-image" class="card-img">
+                    </a>
+
+                    <h1><%= character.name %></h1>
+
+                    <h3 class="race-gender"><%= character.race %> - <%= character.gender %></h3>
+
+                    <h3 class="margin-bottom-txt">Base Ki:</h3>
+                    <h4 class="yellow-text"><%= character.ki %></h4>
+
+                    <h3 class="margin-bottom-txt">Max Ki:</h3>
+                    <h4 class="yellow-text"><%= character.maxKi %></h4>
+
+                    <h5><%= character.affiliation %></h5>
+
+                </div>
+                <%}) %>
+            <%}else{%>
+                <p> No characters found</p>
+                <%} %>
+    </div>
+
+
+    <%# Pagination %>
+    <div class="pagination">
+        <% if(currentPage>1){%>
+            <a href="/characters?page=<%= currentPage-1 %>" class="prev-next">Previous</a>
+            <%} %>
+
+            <span class="span-text">Page <%= currentPage %></span>
+
+            <% if(currentPage<totalPages){%>
+                <a href="/characters?page=<%= currentPage+1 %>" class="prev-next">Next</a>
+                <%} %>
+    </div>
+
+    
+    <button id="mute-btn" class="mute-button">
+        <span id="mute-icon">🔊</span>
+    </button>
+    <script src="/card-observer.js"></script>
+
+     
+
+    <script src="/audio-handler.js"></script>
+
+</body>
+</html>
