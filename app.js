@@ -2,9 +2,15 @@ import express from "express";
 import axios from "axios";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import fs from "fs";
 
 
 const app=express();
+
+// Load characters.json
+const charactersData = JSON.parse(
+  fs.readFileSync("./characters.json", "utf-8")
+);
 
 const limiter= rateLimit({
     windowMs:5*60*1000,
@@ -42,25 +48,35 @@ app.get("/",(req,res)=>{
     res.render("index.ejs");
 });
 
-//2.Characters-page route.
-app.get("/characters", async(req,res)=>{
-    try{
-        const pageno=req.query.page || 1;
-        const response= await axios.get(`https://dragonball-api.com/api/characters?page=${pageno}&limit=24`);
-        res.render("characters.ejs",{
-            characters:response.data.items,
-            currentPage:response.data.meta.currentPage,
-            totalPages:response.data.meta.totalPages,
-        });
-    }catch(error){
-            res.render("characters.ejs",{
-                characters:[],
-                currentPage:1,
-                totalPages:1,
-                error:"Failed to load.",
-            });
-        }
+//2.All Characters Page (LOCAL JSON Pagination)
+app.get("/characters", (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 24;
+
+    const allCharacters = charactersData.items;
+
+    const start = (page - 1) * limit;
+    const end = start + limit;
+
+    const paginatedCharacters = allCharacters.slice(start, end);
+    const totalPages = Math.ceil(allCharacters.length / limit);
+
+    res.render("characters.ejs", {
+      characters: paginatedCharacters,
+      currentPage: page,
+      totalPages: totalPages,
     });
+
+  } catch (error) {
+    res.render("characters.ejs", {
+      characters: [],
+      currentPage: 1,
+      totalPages: 1,
+      error: "Failed to load."
+    });
+  }
+});
 
 
 //3.Search-characters route.
